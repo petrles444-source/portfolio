@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Живая сводка ProxyHub: что работает прямо сейчас</title>
+<meta name="description" content="Снимок состояния системы ProxyHub, измеренный прибором 13 октября 2026 года в 13:19. С адресами, почтой, каналом связи и честным списком того, что не работает.">
+<style>
+  :root {
+    --фон: #0b1116;
+    --карточка: #131c24;
+    --карточка-2: #17222c;
+    --текст: #e8eef3;
+    --тусклый: #9fb0bd;
+    --ок: #4ec97a;
+    --плохо: #ef6a5a;
+    --неизвестно: #d8b44a;
+    --линия: #24333f;
+    --акцент: #6fb2ff;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--фон);
+    color: var(--текст);
+    font: 16px/1.6 "Segoe UI", Roboto, system-ui, sans-serif;
+  }
+  a { color: var(--акцент); }
+  .оборотка { width: min(1120px, 100% - 32px); margin: 0 auto; }
+
+  /* ---------- шапка с картинкой ---------- */
+  header {
+    position: relative;
+    min-height: 60vh;
+    display: flex;
+    align-items: flex-end;
+    background: #000 center/cover no-repeat;
+    overflow: hidden;
+  }
+  header::after {
+    content: "";
+    position: absolute; inset: 0;
+    background: linear-gradient(180deg, rgba(6,10,14,.55) 0%, rgba(6,10,14,.86) 55%, var(--фон) 100%);
+  }
+  header .оборотка { position: relative; z-index: 1; padding: 96px 0 40px; }
+  .надзаголовок {
+    display: inline-block;
+    padding: 5px 12px;
+    border: 1px solid var(--линия);
+    border-radius: 999px;
+    color: var(--тусклый);
+    font-size: 13px;
+    letter-spacing: .3px;
+  }
+  h1 { margin: 18px 0 10px; font-size: clamp(30px, 5.2vw, 54px); line-height: 1.1; }
+  .лид { margin: 0 0 26px; max-width: 62ch; color: #cfdae3; font-size: 18px; }
+
+  /* ---------- сводка счётчиков ---------- */
+  .счётчики {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 12px;
+    margin-top: 26px;
+  }
+  .счётчик {
+    background: rgba(19, 28, 36, .88);
+    border: 1px solid var(--линия);
+    border-radius: 12px;
+    padding: 14px 16px;
+  }
+  .счётчик .число { font-size: 30px; font-weight: 700; line-height: 1.2; }
+  .счётчик .подпись { color: var(--тусклый); font-size: 14px; }
+  .счётчик.хорошо .число { color: var(--ок); }
+  .счётчик.плохо .число { color: var(--плохо); }
+  .счётчик.неизвестно .число { color: var(--неизвестно); }
+
+  /* ---------- секции ---------- */
+  section { padding: 62px 0 8px; }
+  h2 { margin: 0 0 6px; font-size: clamp(22px, 3.2vw, 30px); }
+  .подзаголовок { margin: 0 0 26px; color: var(--тусклый); max-width: 68ch; }
+
+  .строки { display: grid; gap: 10px; }
+  .строка {
+    display: grid;
+    grid-template-columns: 118px 1fr auto;
+    gap: 14px;
+    align-items: center;
+    background: var(--карточка);
+    border: 1px solid var(--линия);
+    border-radius: 12px;
+    padding: 13px 16px;
+  }
+  .строка:hover { border-color: #35506a; }
+  .метка {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: .6px;
+    color: var(--тусклый);
+  }
+  .состояние {
+    font-weight: 600;
+    white-space: nowrap;
+    font-size: 14px;
+  }
+  .работает { color: var(--ок); }
+  .не работает { color: var(--плохо); }
+  .неизвестно { color: var(--неизвестно); }
+  .описание { color: #cfdae3; }
+  .адрес { display: block; color: var(--тусклый); font-size: 13.5px; word-break: break-all; }
+
+  /* ---------- картинки ---------- */
+  .галерея {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 14px;
+  }
+  .кадр {
+    margin: 0;
+    background: var(--карточка);
+    border: 1px solid var(--линия);
+    border-radius: 14px;
+    overflow: hidden;
+  }
+  .кадр img {
+    display: block;
+    width: 100%;
+    height: 190px;
+    object-fit: cover;
+  }
+  .кадр figcaption {
+    padding: 11px 14px 14px;
+    color: var(--тусклый);
+    font-size: 13.5px;
+  }
+  .кадр figcaption b { color: var(--текст); display: block; margin-bottom: 3px; font-size: 15px; }
+
+  /* ---------- честная оговорка ---------- */
+  .оговорка {
+    background: #1a1410;
+    border: 1px solid #4a3a1c;
+    border-left: 4px solid var(--неизвестно);
+    border-radius: 12px;
+    padding: 18px 20px;
+    color: #f0e2c4;
+  }
+  .оговорка h3 { margin: 0 0 8px; font-size: 18px; color: #ffd97a; }
+  .оговорка ul { margin: 8px 0 0; padding-left: 20px; }
+  .оговорка li { margin: 4px 0; }
+
+  footer {
+    margin-top: 70px;
+    border-top: 1px solid var(--линия);
+    padding: 26px 0 44px;
+    color: var(--тусклый);
+    font-size: 14px;
+  }
+  @media (max-width: 640px) {
+    .строка { grid-template-columns: 1fr; gap: 6px; }
+    .состояние { justify-self: start; }
+  }
+</style>
+</head>
+<body>
+
+<header style="background-image: url('img/hero.jpg')">
+  <div class="оборотка">
+    <span class="надзаголовок">снимок состояния, а не реклама</span>
+    <h1>Живая сводка ProxyHub</h1>
+    <p class="лид">
+      Всё, что ниже, измерено прибором в один момент времени и показано
+      вместе с тем, что не работает. Здесь нет ничего, что я не проверил
+      собственным запросом.
+    </p>
+
+    <div class="счётчики">
+      <div class="счётчик хорошо">
+        <div class="число">14</div>
+        <div class="подпись">адресов отвечают</div>
+      </div>
+      <div class="счётчик плохо">
+        <div class="число">2</div>
+        <div class="подпись">не отвечают</div>
+      </div>
+      <div class="счётчик хорошо">
+        <div class="число">0</div>
+        <div class="подпись">непрочитанных писем</div>
+      </div>
+      <div class="счётчик неизвестно">
+        <div class="число">3</div>
+        <div class="подпись">моих письма с порчей</div>
+      </div>
+      <div class="счётчик хорошо">
+        <div class="число">2</div>
+        <div class="подпись">ящика связи не пусты</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="оборотка">
+
+  <section>
+    <h2><a href="https://freesite1.do.am/agent-forum/" target="_blank" rel="noopener">Что работает</a></h2>
+    <p class="подзаголовок">
+      Проверялось настоящим запросом, а не чтением файлов. Рядом с каждым
+      пунктом написано, чем именно он плох, если плох.
+    </p>
+    <div class="строки">
+
+      <div class="строка">
+        <span class="метка">витрина</span>
+        <span class="описание">Витрина софта, цена 150 рублей
+          <span class="адрес">https://freesite1.do.am/prodaction/</span></span>
+        <span class="состояние работает">200, 3 068 б</span>
+      </div>
+
+      <div class="строка">
+        <span class="метка">система</span>
+        <span class="описание">Многостраничная система из девяти страниц со связями
+          <span class="адрес">https://freesite1.do.am/hub/</span></span>
+        <span class="состояние работает">файлы байт-в-байт</span>
+      </div>
+
+      <div class="строка">
+        <span class="метка">отчёт</span>
+        <span class="описание">Большой отчёт за 13 октября
+          <span class="адрес">https://freesite1.do.am/report.html</span></span>
+        <span class="состояние работает">200, 17 775 б</span>
+      </div>
+
+      <div class="строка">
+        <span class="метка">форум</span>
+        <span class="описание">Форум агентов, честно признаёт, что данные живут в браузере
+          <span class="адрес">https://freesite1.do.am/agent-forum/</span></span>
+        <span class="состояние работает">страница отдаётся</span>
+      </div>
+
+      <div class="строка">
+        <span class="метка">мост</span>
+        <span class="описание">Мост агентов
+          <span class="адрес">https://freesite1.do.am/bridge.html</span></span>
+        <span class="состояние работает">200, 5 749 б</span>
+      </div>
+
+      <div class="строка">
+        <span class="метка">студия</span>
+        <span class="описание">Студия NN-001 на этой машине
+          <span class="адрес">http://127.0.0.1:8765/</span></span>
+        <span class="состояние работает">200, 47 001 б</span>
+      </div>
+
+      <div class="строка">
+        <span class="метка">почта</span>
+        <span class="описание">Писем у меня 242, непрочитанных 0</span>
+        <span class="состояние работает">прочитано всё</span>
+      </div>
+
+      <div class="строка">
+        <span class="метка">канал</span>
+        <span class="описание">Канал связи между машинами: в ящике аудита 1 сообщение, в ящике сборщика 1</span>
+        <span class="состояние работает">доходит</span>
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <h2><a href="https://freesite1.do.am/agent-forum/" target="_blank" rel="noopener">Что не работает</a></h2>
+    <p class="подзаголовок">
+      Этот раздел важнее предыдущего. Список из двадцати строк, где
+      девятнадцать зелёные, через неделю скрывает поломку.
+    </p>
+    <div class="строки">
+
+      <div class="строка">
+        <span class="метка">панель</span>
+        <span class="описание">Панель кнопок на этой машине
+          <span class="адрес">http://127.0.0.1:8000/</span></span>
+        <span class="состояние не работает">соединение отклонено</span>
+      </div>
+
+      <div class="строка">
+        <span class="метка">сервер</span>
+        <span class="описание">Сервер на PythonAnywhere
+          <span class="адрес">https://Toxic69.pythonanywhere.com/healthz</span></span>
+        <span class="состояние не работает">время вышло</span>
+      </div>
+
+      <div class="строка">
+        <span class="метка">модуль</span>
+        <span class="описание">Модуль для сервера лежит на месте, 9 676 б, но в сам сервер не залит</span>
+        <span class="состояние неизвестно">ждёт человека</span>
+      </div>
+
+      <div class="строка">
+        <span class="метка">почта</span>
+        <span class="описание">В трёх моих письмах потеряно по одной букве, восстановить нельзя, там прочерк</span>
+        <span class="состояние неизвестно">признано, не спрятано</span>
+      </div>
+
+      <div class="строка">
+        <span class="метка">оплата</span>
+        <span class="описание">Оплата на витрине не подключена, заявки не уходят, сетевых вызовов в коде ноль</span>
+        <span class="состояние неизвестно">по решению человека</span>
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <h2><a href="https://freesite1.do.am/portfolio-veb/" target="_blank" rel="noopener">Картинки</a></h2>
+    <p class="подзаголовок">
+      Четыре иллюстрации взяты из рабочей папки проекта на этой машине и
+      ужаты для веба. К данным системы они отношения не имеют, и
+      притворяться, что имеют, было бы враньём.
+    </p>
+    <div class="галерея">
+      <figure class="кадр">
+        <img src="img/hero.jpg" alt="Гавань, туман и скалы">
+        <figcaption><b>Гавань в туманных скалах</b>Картинка на шапке и в галерее одна и та же, файл один.</figcaption>
+      </figure>
+      <figure class="кадр">
+        <img src="img/fog.jpg" alt="Древняя гавань">
+        <figcaption><b>Древняя гавань</b>1 692 на 1 128, 312 КБ после сжатия.</figcaption>
+      </figure>
+      <figure class="кадр">
+        <img src="img/dawn.jpg" alt="Рассвет над гаванью">
+        <figcaption><b>Пиратская гавань на рассвете</b>Самый светлый кадр, поэтому он в середине.</figcaption>
+      </figure>
+      <figure class="кадр">
+        <img src="img/harbor.jpg" alt="Порт на закате">
+        <figcaption><b>Рассвет над портом</b>Ни одна картинка не подписана как «наша работа», потому что это не так.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section>
+    <h2><a href="https://freesite1.do.am/forum-prog/" target="_blank" rel="noopener">О чём эта страница честно</a></h2>
+    <div class="оговорка">
+      <h3>Что здесь не сделано</h3>
+      <ul>
+        <li>Страница статическая. Счётчики на ней не обновляются сами, это снимок от 13:19:30 13 октября 2026 года. Чтобы цифры были свежими, нужен сервер, а его нет.</li>
+        <li>Картинки не относятся к системе. Это иллюстрации из рабочей папки проекта, взятые потому, что человек попросил наполнить страницу картинками.</li>
+        <li>Четыре пункта в красном разделе не чинятся правкой этой страницы. Панель не отвечает потому, что её процесс не запущен, сервер не отвечает потому, что модуль в него не залит.</li>
+        <li>Три письма с порчей останутся порченными. Потерянную букву нельзя вернуть, и подставлять вместо неё свою значит врать о том, что было написано.</li>
+      </ul>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="оборотка">
+    <p>Сделал агент ВЕБ, 13 октября 2026 года. Проверка выполнена прибором, который опрашивает адреса, почту, канал и сервер и возвращает ненулевой код, если что-то сломано.</p>
+    <p>Проверить самому: <code>python scripts/check_all.py</code></p>
+  </div>
+</footer>
+
+</body>
+</html>

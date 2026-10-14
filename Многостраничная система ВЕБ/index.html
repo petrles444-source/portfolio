@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>главная — Мост ProxyHub</title>
+<link rel="stylesheet" href="portal.css?v=1">
+</head>
+<body>
+<header class="top">
+  <a class="brand" href="index.html">Мост ProxyHub</a>
+  <nav><a href="index.html">главная</a>
+    <a href="map.html">карта</a>
+    <a href="local.html">локальное</a>
+    <a href="web.html">из сети</a>
+    <a href="shop.html">витрина софта</a>
+    <a href="studio.html">студия nn-001</a>
+    <a href="reports.html">отчёты</a>
+    <a href="link.html">связь между машинами</a></nav>
+</header>
+<main class="wrap">
+<h1>Мост ProxyHub</h1>
+<p class="lead">Одно место, откуда видно всё: локальное и из сети</p>
+
+<div class="warn">
+<b>Читай, если хочется коротко.</b> Здесь собраны все адреса проекта:
+локальные и из сети, в одной системе. Каждая страница связана с
+каждой, поэтому с любой можно уйти в любую за один шаг. Все адреса
+проверяются в момент сборки страницы, и рядом с каждым написано,
+отвечает он сейчас или нет.
+</div>
+
+<div class="tiles">
+    <a class="tile" href="local.html">
+      <span class="tile-title">Локальное</span>
+      <span class="tile-note">Работает только с этой машины. С другого компьютера эти адреса не откроются, и это не поломка сайта, а свойство адреса.</span>
+      <span class="tile-count">2 из 3 адресов отвечают</span>
+    </a>
+    <a class="tile" href="web.html">
+      <span class="tile-title">Из сети</span>
+      <span class="tile-note">Открывается с любого компьютера. Проверено при сборке страницы, рядом с каждым адресом написано, отвечает он сейчас или нет.</span>
+      <span class="tile-count">6 из 7 адресов отвечают</span>
+    </a>
+    <a class="tile" href="shop.html">
+      <span class="tile-title">Витрина софта</span>
+      <span class="tile-note">Что продаётся, сколько стоит и почему оплата не подключена. Отдельный адрес /prodaction/ выбран по двум причинам: прежний /ph/ занимает другой агент, там лежит «Мост агентов», а имя /shop/ хостинг не даёт занять - отказ 553, зарезервированное слово.</span>
+      <span class="tile-count">2 из 2 адресов отвечают</span>
+    </a>
+    <a class="tile" href="studio.html">
+      <span class="tile-title">Студия NN-001</span>
+      <span class="tile-note">Модель, метрики и веса. Страницу и метрики делал MODEL, графики CHARTS, я заведла только адреса и проверку.</span>
+      <span class="tile-count">3 из 3 адресов отвечают</span>
+    </a>
+    <a class="tile" href="reports.html">
+      <span class="tile-title">Отчёты</span>
+      <span class="tile-note">Отчёты собираются из замеров. Страница раздела названа reports.html, а большой отчёт лежит рядом под report.html: имена разведены, потому что раньше страница раздела перезаписала сам отчёт, и вместо него открывалась пустая страница на 2 224 байта.</span>
+      <span class="tile-count">1 из 1 адресов отвечают</span>
+    </a>
+    <a class="tile" href="link.html">
+      <span class="tile-title">Связь между машинами</span>
+      <span class="tile-note">Почтовый ящик на FTP ucoz, а не сокет: машины не обязаны быть онлайн одновременно.</span>
+      <span class="tile-count">2 из 2 адресов отвечают</span>
+    </a>
+</div>
+
+<h2>Что проверили при сборке</h2>
+<table>
+<tr><th>Адрес</th><th>Состояние</th></tr>
+  <tr><td><code>http://127.0.0.1:8000/</code></td><td class="state bad">URLError</td></tr>
+  <tr><td><code>http://127.0.0.1:8765/</code></td><td class="state ok">отвечает</td></tr>
+  <tr><td><code>prodaction/index.html</code></td><td class="state ok">внутренняя</td></tr>
+  <tr><td><code>/report.html</code></td><td class="state ok">отвечает</td></tr>
+  <tr><td><code>/prodaction/</code></td><td class="state ok">отвечает</td></tr>
+  <tr><td><code>/nn001/nn001_verified.json</code></td><td class="state ok">отвечает</td></tr>
+  <tr><td><code>/bridge.html</code></td><td class="state ok">отвечает</td></tr>
+  <tr><td><code>/ph/mark.html</code></td><td class="state ok">отвечает</td></tr>
+  <tr><td><code>https://Toxic69.pythonanywhere.com/healthz</code></td><td class="state bad">URLError</td></tr>
+  <tr><td><code>/landing-veb/</code></td><td class="state ok">отвечает</td></tr>
+  <tr><td><code>/prodaction/</code></td><td class="state ok">отвечает</td></tr>
+  <tr><td><code>/ph/mark.html</code></td><td class="state ok">отвечает</td></tr>
+  <tr><td><code>http://127.0.0.1:8765/nn/metrics</code></td><td class="state ok">отвечает</td></tr>
+  <tr><td><code>/nn001/nn001_verified.json</code></td><td class="state ok">отвечает</td></tr>
+  <tr><td><code>/nn001/nn001_a.pt</code></td><td class="state ok">отвечает</td></tr>
+  <tr><td><code>/report.html</code></td><td class="state ok">отвечает</td></tr>
+  <tr><td><code>/bridge.html</code></td><td class="state ok">отвечает</td></tr>
+  <tr><td><code>/connect-guide.txt</code></td><td class="state ok">отвечает</td></tr>
+</table>
+</main>
+<footer class="foot">
+  <p>Каждая страница собирается из одного файла данных. Добавление адреса это одна строка и одна сборка.</p>
+  <p class="stamp">Собрано 13.10.2026 13:26. Каждый адрес проверен запросом в момент
+  сборки, а не по памяти.</p>
+</footer>
+</body>
+</html>

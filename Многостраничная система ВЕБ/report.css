@@ -1,0 +1,135 @@
+:root {
+  --bg: #101318;
+  --card: #181c23;
+  --line: #2b323d;
+  --text: #e8ebf0;
+  --dim: #9aa4b2;
+  --accent: #6ba4ff;
+  --warn-bg: #33301c;
+  --warn-line: #7a7038;
+  --warn-text: #efe0a8;
+  --ok: #8fdca8;
+  --bad: #ff9a8a;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font: 15.5px/1.7 -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+.wrap {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 36px 24px 80px;
+}
+
+h1 {
+  margin: 0 0 8px;
+  font-size: 32px;
+  letter-spacing: .2px;
+}
+
+.sub {
+  margin: 0 0 26px;
+  color: var(--dim);
+  font-size: 16.5px;
+}
+
+h2 {
+  margin: 44px 0 12px;
+  font-size: 23px;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 9px;
+}
+
+h3 {
+  margin: 26px 0 8px;
+  font-size: 17px;
+  color: var(--text);
+}
+
+p { margin: 12px 0; }
+
+ul, ol { margin: 12px 0; padding-left: 24px; }
+li { margin: 7px 0; }
+
+b, strong { color: #fff; }
+
+.warn {
+  background: var(--warn-bg);
+  border: 1px solid var(--warn-line);
+  border-left: 4px solid var(--warn-line);
+  color: var(--warn-text);
+  border-radius: 8px;
+  padding: 15px 18px;
+  margin: 24px 0;
+  font-size: 15px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 16px 0;
+  font-size: 14.5px;
+}
+
+th, td {
+  border: 1px solid var(--line);
+  padding: 10px 12px;
+  text-align: left;
+  vertical-align: top;
+}
+
+th {
+  background: var(--card);
+  color: var(--dim);
+  font-weight: 600;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: .4px;
+}
+
+td { background: var(--card); }
+
+tr td:first-child { color: #cfd6e0; }
+
+code {
+  font-family: ui-monospace, "Cascadia Mono", Consolas, monospace;
+  font-size: 13px;
+  background: #0b0e12;
+  border: 1px solid var(--line);
+  padding: 1px 6px;
+  border-radius: 4px;
+  color: var(--accent);
+}
+
+pre {
+  background: #0b0e12;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 14px 16px;
+  overflow-x: auto;
+  font-family: ui-monospace, "Cascadia Mono", Consolas, monospace;
+  font-size: 13px;
+  color: #b9c4d2;
+}
+
+pre code {
+  background: none;
+  border: 0;
+  padding: 0;
+  color: inherit;
+  font-size: inherit;
+}
+
+.foot {
+  margin-top: 48px;
+  padding-top: 18px;
+  border-top: 1px solid var(--line);
+  color: var(--dim);
+  font-size: 14px;
+}

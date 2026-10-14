@@ -1,0 +1,190 @@
+:root {
+  --bg: #0f1216;
+  --card: #181c22;
+  --line: #2a313b;
+  --text: #e7eaef;
+  --dim: #98a2b0;
+  --accent: #4c8dff;
+  --ok: #7ddc9a;
+  --bad: #ff9a8a;
+  --warn-bg: #3b2f12;
+  --warn-line: #7d5c17;
+  --warn-text: #f2d48c;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font: 15px/1.6 -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+/* ПЛАШКА ПРО ОПЛАТУ.
+   Первый элемент на странице, полная ширина, жёлтый фон.
+   Не декорация: если человек её не заметит, он нажмёт «Купить».
+   Поэтому она заметнее всего остального, а не наравне с ним. */
+.pay-note {
+  background: var(--warn-bg);
+  border-bottom: 2px solid var(--warn-line);
+  color: var(--warn-text);
+  padding: 16px 24px;
+  font-size: 15px;
+  line-height: 1.55;
+}
+
+.pay-note[hidden] { display: none; }
+
+.wrap {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 28px 24px 60px;
+}
+
+.head { margin-bottom: 26px; }
+h1 { margin: 0; font-size: 30px; letter-spacing: .2px; }
+.sub { margin: 6px 0 0; color: var(--dim); font-size: 16px; }
+
+h2 { font-size: 20px; margin: 0 0 10px; }
+
+.goods { display: grid; gap: 16px; }
+
+.good {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 22px 24px;
+}
+
+.good-title { margin: 0 0 4px; }
+
+.price {
+  font-size: 26px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.note { margin: 0 0 12px; color: var(--dim); }
+
+.good ul {
+  margin: 0 0 14px;
+  padding-left: 20px;
+  color: var(--text);
+}
+.good li { margin: 3px 0; }
+
+.meta {
+  font-size: 13px;
+  color: var(--dim);
+  border-top: 1px solid var(--line);
+  padding-top: 10px;
+  margin-bottom: 16px;
+}
+
+.buy {
+  width: 100%;
+  padding: 12px;
+  border: 0;
+  border-radius: 9px;
+  background: var(--accent);
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.buy:hover:not(:disabled) { filter: brightness(1.08); }
+
+/* Запертая кнопка после нажатия: серая и с честным текстом.
+   Серая — чтобы было видно, что нажатие состоялось и изменить
+   ничего нельзя, а не чтобы выглядело как «временно загружается». */
+.buy:disabled {
+  background: #2b323c;
+  color: var(--dim);
+  cursor: default;
+}
+
+.how {
+  margin: 34px 0 0;
+  padding: 22px 24px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--card);
+}
+.how ol { margin: 0; padding-left: 22px; color: var(--dim); }
+.how li { margin: 8px 0; }
+
+.card {
+  margin: 18px 0 0;
+  padding: 22px 24px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--card);
+}
+
+label {
+  display: block;
+  margin: 16px 0 6px;
+  font-size: 13px;
+  color: var(--dim);
+}
+
+input, select, textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid var(--line);
+  background: #0d1014;
+  color: var(--text);
+  font-size: 15px;
+  font-family: inherit;
+}
+
+input:focus, select:focus, textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+textarea { resize: vertical; }
+
+label.chk {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin: 18px 0 0;
+  color: var(--text);
+  font-size: 14px;
+}
+
+label.chk input { width: 16px; height: 16px; flex: 0 0 auto; }
+
+#submit {
+  margin-top: 20px;
+  width: 100%;
+  padding: 13px;
+  border: 0;
+  border-radius: 9px;
+  background: #3f4753;
+  color: var(--text);
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+}
+#submit:hover { filter: brightness(1.12); }
+
+.msg { margin: 14px 0 0; min-height: 20px; font-size: 14px; color: var(--dim); }
+.msg:empty { display: none; }
+.msg.bad { color: var(--bad); }
+.msg.good { color: var(--ok); }
+
+.foot { margin-top: 34px; color: #6b7380; font-size: 13px; }
+.foot p { margin: 0; }
+
+code {
+  font-family: ui-monospace, "Cascadia Mono", Consolas, monospace;
+  font-size: 12px;
+  background: #0d1014;
+  padding: 1px 5px;
+  border-radius: 4px;
+}
